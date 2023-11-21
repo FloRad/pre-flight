@@ -5,6 +5,28 @@
 <mat-divider></mat-divider>
 <mat-selection-list>
   @for (item of items; track $index) {
-  <mat-list-option checkboxPosition="before">{{ item }}</mat-list-option>
+  <mat-list-option
+    checkboxPosition="before"
+    (selectedChange)="onChangeSelected($index, $event)"
+  >
+    {{ item }}
+  </mat-list-option>
   }
 </mat-selection-list>
+<mat-list cdkDropList (cdkDropListDropped)="drop($event)">
+  @for (item of items; track $index) {
+  <mat-list-item cdkDrag cdkDragLockAxis="y">
+    <mat-icon matListItemIcon cdkDragHandle>menu</mat-icon>
+    {{ item }}
+    <button
+      matListItemMeta
+      mat-icon-button
+      color="primary"
+      aria-label="Delete this entry"
+      (click)="deleteEntry($index)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+  }
+</mat-list>
