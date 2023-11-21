@@ -1,0 +1,7 @@
+<form class="p-2" (ngSubmit)="submit()">
+  <mat-form-field class="w-full">
+    <mat-label>Favorite food</mat-label>
+    <input type="text" matInput [formControl]="newEntry" />
+  </mat-form-field>
+  <button type="submit" mat-button color="primary">Add Item</button>
+</form>

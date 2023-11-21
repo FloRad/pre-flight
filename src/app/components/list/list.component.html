@@ -1,0 +1,10 @@
+@if (addNew) {<app-add-entry-form
+  (addEntry)="onAddEntry($event)"
+></app-add-entry-form
+>}
+<mat-divider></mat-divider>
+<mat-selection-list>
+  @for (item of items; track $index) {
+  <mat-list-option checkboxPosition="before">{{ item }}</mat-list-option>
+  }
+</mat-selection-list>
