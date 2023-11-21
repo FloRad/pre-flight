@@ -1,7 +1,6 @@
-@if (addNew) {<app-add-entry-form
-  (addEntry)="onAddEntry($event)"
-></app-add-entry-form
->}
+@if (addNew) {
+<app-add-entry-form (addEntry)="onAddEntry($event)"></app-add-entry-form>
+}
 <mat-divider></mat-divider>
 <mat-selection-list>
   @for (item of items; track $index) {
