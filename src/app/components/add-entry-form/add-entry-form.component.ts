@@ -27,14 +27,16 @@ import { MatInputModule } from '@angular/material/input';
 export class AddEntryFormComponent {
   newEntry = new FormControl('', {
     nonNullable: true,
-    validators: [Validators.required],
+    validators: [Validators.required, Validators.minLength(1)],
   });
 
   @Output() addEntry = new EventEmitter<string>();
 
   submit() {
     if (!this.newEntry.valid) return;
-    this.addEntry.emit(this.newEntry.value as string);
+    const value = this.newEntry.value;
+    if (!value) return;
+    this.addEntry.emit(value);
     this.reset();
   }
 
